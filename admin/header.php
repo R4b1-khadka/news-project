@@ -1,3 +1,14 @@
+<?php 
+session_start();
+include "config.php";
+if(!isset($_SESSION['username'])){
+    // echo "hello world";
+  header("Location: {$hostname}/admin/");
+  exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
