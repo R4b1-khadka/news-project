@@ -4,7 +4,7 @@ include "config.php";
 if(!isset($_SESSION['username'])){
     // echo "hello world";
   header("Location: {$hostname}/admin/");
-  exit();
+ 
 }
 ?>
 
@@ -37,8 +37,8 @@ if(!isset($_SESSION['username'])){
                     </div>
                     <!-- /LOGO -->
                       <!-- LOGO-Out -->
-                    <div class="col-md-offset-9  col-md-1">
-                        <a href="logout.php" class="admin-logout" >logout</a>
+                    <div class="col-md-offset-9  col-md-3">
+                        <a href="logout.php" class="admin-logout" ><?php echo   $_SESSION['username']; ?>, logout</a>
                     </div>
                     <!-- /LOGO-Out -->
                 </div>
@@ -54,12 +54,11 @@ if(!isset($_SESSION['username'])){
                             <li>
                                 <a href="post.php">Post</a>
                             </li>
-                            <li>
-                                <a href="category.php">Category</a>
-                            </li>
-                            <li>
-                                <a href="users.php">Users</a>
-                            </li>
+                            <?php if ($_SESSION['user_role']==1){
+                          echo "<li> <a href='category.php'>Category</a></li>";
+                         echo"   <li>  <a href='users.php'>Users</a> </li>";
+                         }
+                           ?>
                         </ul>
                     </div>
                 </div>
