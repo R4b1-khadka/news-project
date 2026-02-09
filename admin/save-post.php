@@ -16,8 +16,8 @@ session_start();
            if($file_size>2097152){
             $errors[]='File size must be less than 2 MB';
            }
-           if(empty( $errors)===true){
-            move_uploaded_file($file_tmp,'./upload'.$file_name);
+           if(empty($errors)===true){
+            move_uploaded_file($file_tmp,"upload/".$file_name);
            }else{
              print_r($errors);
              die();
