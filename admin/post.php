@@ -71,9 +71,9 @@
                         $limit=3;
                         $total_pages= ceil($total_records / $limit);
 
-                       echo " <ul class='pagination admin-pagination'>";
+                       echo "<ul class='pagination admin-pagination'>";
                        if($page>1){
-                        echo "<li><a href='users.php?page=".($page-1)."'>Previous</a></li>";
+                        echo "<li><a href='post.php?page=".($page-1)."'>Previous</a></li>";
                        }
                         for($i=1;$i<=$total_pages;$i++){
                             if($i==$page){
