@@ -21,14 +21,14 @@
                     $offset= ($page-1)* $limit;
 
                         if($_SESSION['user_role']==1){
-                                $sql= "SELECT post.post_id, post.title, post.description, post.post_date, category.category_name, user.username FROM post
+                                $sql= "SELECT post.post_id, post.title, post.description, post.post_date, post.category, category.category_name, user.username FROM post
                     LEFT JOIN category ON post.category = category.category_id
                     LEFT JOIN user ON post.author=user.user_id
                     ORDER BY post.post_id DESC LIMIT {$offset},{$limit}";
                     
          
     }elseif($_SESSION['user_role']==0){
-                    $sql= "SELECT post.post_id, post.title, post.description, post.post_date, category.category_name, user.username FROM post
+                    $sql= "SELECT post.post_id, post.title, post.description, post.category, post.post_date, category.category_name, user.username FROM post
                     LEFT JOIN category ON post.category = category.category_id
                     LEFT JOIN user ON post.author=user.user_id
                     WHERE post.author={$_SESSION['user_id']}
@@ -56,7 +56,7 @@
                               <td><?php echo $row['post_date']; ?></td>
                               <td><?php echo $row['username']; ?></td>
                               <td class='edit'><a href="update-post.php?id=<?php echo $row['post_id']; ?>"><i class='fa fa-edit'><?php echo $row['post_id'] ?></i></a></td>
-                              <td class='delete'><a href="delete-post.php?id=<?php echo $row['post_id']; ?>"><i class='fa fa-trash-o'></i></a></td>
+                              <td class='delete'><a href="delete-post.php?id=<?php echo $row['post_id']; ?>&catid=<?php echo $row['category']; ?>"><i class='fa fa-trash-o'></i></a></td>
                           </tr> 
                          <?php } ?>
                       </tbody>
